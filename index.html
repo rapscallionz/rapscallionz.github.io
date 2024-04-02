@@ -81,7 +81,7 @@
             var end_date = new Date(return_date);
             var num_months = (end_date.getFullYear() - start_date.getFullYear()) * 12 + (end_date.getMonth() - start_date.getMonth());
 
-            var tax = (loan_amount * 0.01) * num_months;
+            var tax = (loan_amount * 0.03) * num_months;
 
             document.getElementById("loan_amount_result").innerHTML = "Jumlah Pinjaman: Rp " + loan_amount;
             document.getElementById("loan_date_result").innerHTML = "Tanggal Peminjaman: " + loan_date;
