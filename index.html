@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinjam Nanda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        input[type="number"], input[type="date"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pinjam Nanda</h1>
+        <form id="loanForm">
+            <label for="loan_amount">Jumlah Pinjaman (Rp):</label>
+            <input type="number" id="loan_amount" name="loan_amount" required>
+            <label for="loan_date">Tanggal Peminjaman:</label>
+            <input type="date" id="loan_date" name="loan_date" required>
+            <label for="return_date">Tanggal Pengembalian:</label>
+            <input type="date" id="return_date" name="return_date" required>
+            <input type="button" value="Hitung Pajak" onclick="calculateTax()">
+        </form>
+
+        <div id="result" style="display: none;">
+            <h2>Hasil Perhitungan Pajak</h2>
+            <p id="loan_amount_result"></p>
+            <p id="loan_date_result"></p>
+            <p id="return_date_result"></p>
+            <p id="num_months_result"></p>
+            <p id="tax_result"></p>
+            <p>Screenshot Data Diatas!</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateTax() {
+            var loan_amount = document.getElementById("loan_amount").value;
+            var loan_date = document.getElementById("loan_date").value;
+            var return_date = document.getElementById("return_date").value;
+
+            var start_date = new Date(loan_date);
+            var end_date = new Date(return_date);
+            var num_months = (end_date.getFullYear() - start_date.getFullYear()) * 12 + (end_date.getMonth() - start_date.getMonth());
+
+            var tax = (loan_amount * 0.01) * num_months;
+
+            document.getElementById("loan_amount_result").innerHTML = "Jumlah Pinjaman: Rp " + loan_amount;
+            document.getElementById("loan_date_result").innerHTML = "Tanggal Peminjaman: " + loan_date;
+            document.getElementById("return_date_result").innerHTML = "Tanggal Pengembalian: " + return_date;
+            document.getElementById("num_months_result").innerHTML = "Lama Pinjaman: " + num_months + " bulan";
+            document.getElementById("tax_result").innerHTML = "Pajak (1% per bulan): Rp " + tax;
+
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
