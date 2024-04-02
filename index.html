@@ -51,7 +51,7 @@
     <div class="container">
         <h1>NgutangBoss</h1>
         <form id="loanForm">
-            <label for="loan_amount">Jumlah Pinjaman (Rp):</label>
+            <label for="loan_amount">Jumlah Pinjaman (Jangan Gunakan Titik (.)):</label>
             <input type="number" id="loan_amount" name="loan_amount" required>
             <label for="loan_date">Tanggal Peminjaman:</label>
             <input type="date" id="loan_date" name="loan_date" required>
@@ -87,7 +87,7 @@
             document.getElementById("loan_date_result").innerHTML = "Tanggal Peminjaman: " + loan_date;
             document.getElementById("return_date_result").innerHTML = "Tanggal Pengembalian: " + return_date;
             document.getElementById("num_months_result").innerHTML = "Lama Pinjaman: " + num_months + " bulan";
-            document.getElementById("tax_result").innerHTML = "Pajak (1% per bulan): Rp " + tax;
+            document.getElementById("tax_result").innerHTML = "Pajak (3% per bulan): Rp " + tax;
 
             document.getElementById("result").style.display = "block";
         }
